@@ -1,0 +1,52 @@
+﻿@model IEnumerable<FrankForce.Models.OrganizationModel>
+
+@{
+    ViewData["Title"] = "List Organizations";
+}
+
+<h1>ListOrg</h1>
+
+<p>
+    <a asp-controller="Organization" asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.OrganizationId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrganizationId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.ActionLink("Add User", "Create", "User", new { item.OrganizationId }) |
+                    @Html.ActionLink("View Users", "List", "User", new { item.OrganizationId })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<!-- | @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+@Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+   -->
